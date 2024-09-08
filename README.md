@@ -18,14 +18,14 @@
 
 ### 解决方案
 
-#### 下载字体文件
+#### 1.下载字体文件
 [seguiemj mod ver 1.31](https://github.com/dongshull/ClashRule/main/1.31/seguiemj_mod.ttf)
 
 [seguiemj mod ver 1.33](https://github.com/dongshull/ClashRule/main/1.33/seguiemj_mod.ttf)
 
-1.31 版适用于 Win10 和 Server 2019/2022，1.33 版适用于 Win11。这两个版本的不同之处在 emojipedia (Archive) 上有比较详细的说明。
+`1.31` 版适用于 `Win10` 和 Server 2019/2022，`1.33` 版适用于 `Win11`。这两个版本的不同之处在 `emojipedia (Archive)` 上有比较详细的说明。
 
-#### 替换系统字体
+#### 2.替换系统字体
 
 使用 `copy` 命令将字体复制到 `%windir%\Fonts` 中。为了更好的兼容性，新字体文件名的 `ASCII` 排序应当在原字体 `seguiemj.ttf` 之前，同时使用 `8.3` 格式。（说人话就是，复制字体文件到 `c:/windows/fonts` 文件夹中，不要更改压缩包里面的字体文件名）
 
@@ -37,7 +37,7 @@
 
 重启系统使设置生效
 
-#### 大功告成
+#### 3.大功告成
 
 结局以后，无论是浏览器中，还是系统软件中，久违的 Emoji 国旗图案回来了！
 
