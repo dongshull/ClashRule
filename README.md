@@ -1,4 +1,4 @@
-# ClashRule
+# ClashRule（自用规则）
 
 ## 未经允许请勿随意传播
 
