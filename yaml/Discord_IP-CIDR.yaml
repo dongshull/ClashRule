@@ -1,0 +1,8 @@
+# NAME: Discord IP-CIDR
+payload:
+  - IP-CIDR,64.71.8.96/29,no-resolve
+  - IP-CIDR,66.22.192.0/18,no-resolve
+  - IP-CIDR,188.244.120.0/24,no-resolve
+  - IP-CIDR,195.62.89.0/24,no-resolve
+  - IP-CIDR,35.213.98.0/24,no-resolve
+  - IP-CIDR,35.208.0.0/24,no-resolve
