@@ -1,7 +1,7 @@
 # NAME: Custom_Direct
-# AUTHOR: Aethersailor
-# REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
-# 强制直连域名列表，来自个人收集
+# AUTHOR: dongshull
+# REPO: https://raw.githubusercontent.com/dongshull/ClashRule/main/Other-rules/Custom_OpenClash_Rules/Custom_Direct.list
+# 强制直连域名列表
 # 部分域名可能和大陆域名列表存在重叠
 
 # ImmortalWrt 在线更新服务
