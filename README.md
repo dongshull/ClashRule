@@ -2,6 +2,11 @@
 
 ## 未经允许请勿随意传播
 
+>## Mihomo Party 下载链接
+>[Mihomo Party](https://github.com/mihomo-party-org/mihomo-party/releases)
+
+>![Mihomo Party](https://raw.githubusercontent.com/mihomo-party-org/mihomo-party/refs/heads/master/images/icon-black.png)
+>![Mihomo Party1](https://raw.githubusercontent.com/mihomo-party-org/mihomo-party/refs/heads/master/images/preview.jpg)
 >## Mihomo Party 常用覆写脚本/示例
 >### 使用方法
 >1. 复制对应文件 raw 直连，如 `https://raw.githubusercontent.com/dongshull/ClashRule/main/Mihomo-Party/javascript/DongShu%E7%9A%84%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2.js`。
