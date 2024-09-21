@@ -2,16 +2,16 @@
 
 ## 未经允许请勿随意传播
 
-## Mihomo Party 常用覆写脚本/示例
+>## Mihomo Party 常用覆写脚本/示例
+>### 使用方法
+>1. 复制对应文件 raw 直连，如 `https://raw.githubusercontent.com/dongshull/ClashRule/main/Mihomo-Party/javascript/DongShu%E7%9A%84%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2.js`。
+>2. 打开 Mihomo Party，左侧导航栏打开“覆写”页面，粘贴链接后导入，即可看到对应的覆写脚本/配置。
+>3. 左侧导航栏打开“订阅管理”，点击需要覆写的订阅右上角的三个点，选择“编辑信息”。
+>4. 在打开的对话框中最后一项“覆写”，选择刚刚导入的覆写脚本/配置，保存即可。
+#
 
-### 使用方法
 
-1. 复制对应文件 raw 直连，如 `https://raw.githubusercontent.com/dongshull/ClashRule/main/Mihomo-Party/javascript/DongShu%E7%9A%84%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2.js`。
-2. 打开 Mihomo Party，左侧导航栏打开“覆写”页面，粘贴链接后导入，即可看到对应的覆写脚本/配置。
-3. 左侧导航栏打开“订阅管理”，点击需要覆写的订阅右上角的三个点，选择“编辑信息”。
-4. 在打开的对话框中最后一项“覆写”，选择刚刚导入的覆写脚本/配置，保存即可。
-
-# 找回Windows的Emoji国旗旗帜图案！Windows修改字体显示Emoji图标！
+## 找回Windows的Emoji国旗旗帜图案！Windows修改字体显示Emoji图标！
 
 最近用了几天 Windows，发现在 Window 里面，居然不显示 Emoji 的国旗图案。
 
