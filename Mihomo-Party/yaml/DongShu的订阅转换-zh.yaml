@@ -123,7 +123,7 @@ proxy-groups:
       - 新加坡-自动
       - 日本-自动
       - 美国-自动
-  - icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/电报消息.png
+  - icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png
     name: 电报消息
     type: select
     proxies:
@@ -131,7 +131,7 @@ proxy-groups:
       - 新加坡-自动
       - 日本-自动
       - 美国-自动
-  - icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/谷歌服务.png
+  - icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
     name: 谷歌服务
     type: select
     proxies:
