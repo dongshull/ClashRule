@@ -7,7 +7,8 @@
 >![Mihomo Party1](https://raw.githubusercontent.com/mihomo-party-org/mihomo-party/refs/heads/master/images/preview.jpg)
 >## Mihomo Party 常用覆写脚本/示例
 >### 使用方法
->1. 复制对应文件 raw 直连，如 `https://raw.githubusercontent.com/dongshull/ClashRule/main/Mihomo-Party/javascript/DongShu%E7%9A%84%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2.js`。
+>1. 复制对应文件 raw 直连，如 `https://raw.githubusercontent.com/dongshull/ClashRule/main/Mihomo-Party/javascript/DongShu%E7%9A%84%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2.js`
+`https://raw.githubusercontent.com/dongshull/ClashRule/main/Mihomo-Party/yaml/ACL4SSR_Online_Full_WithIcon.yaml`。
 >2. 打开 Mihomo Party，左侧导航栏打开“覆写”页面，粘贴链接后导入，即可看到对应的覆写脚本/配置。
 >3. 左侧导航栏打开“订阅管理”，点击需要覆写的订阅右上角的三个点，选择“编辑信息”。
 >4. 在打开的对话框中最后一项“覆写”，选择刚刚导入的覆写脚本/配置，保存即可。
