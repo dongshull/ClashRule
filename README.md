@@ -1,9 +1,8 @@
-# ClashRule（自用规则）
+# Mihomo Party ClashRule（自用规则）
 
 ## 未经允许请勿随意传播
 
->## Mihomo Party 下载链接
->[Mihomo Party](https://github.com/mihomo-party-org/mihomo-party/releases)
+>## [Mihomo Party](https://github.com/mihomo-party-org/mihomo-party/releases)
 >![Mihomo Party](https://raw.githubusercontent.com/mihomo-party-org/mihomo-party/refs/heads/master/images/icon-black.png)
 >![Mihomo Party1](https://raw.githubusercontent.com/mihomo-party-org/mihomo-party/refs/heads/master/images/preview.jpg)
 >## Mihomo Party 常用覆写脚本/示例
