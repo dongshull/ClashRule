@@ -1,0 +1,8 @@
+custom_proxy_group:
+  name: "My Proxy Group"
+  type: select
+  icon: "https://example.com/icon.png"  # 替换为你的图标链接
+  proxies:
+    - "Proxy1"
+    - "Proxy2"
+    - "Proxy3"
