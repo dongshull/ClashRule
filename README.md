@@ -1,4 +1,5 @@
 # Mihomo Party ClashRule（自用规则）
+[ClashRule](https://raw.githubusercontent.com/dongshull/ClashRule/main/ClashRule.ini)
 
 [My-ClashRule](https://raw.githubusercontent.com/dongshull/ClashRule/main/My-ClashRule.ini)
 
