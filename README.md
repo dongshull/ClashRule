@@ -1,5 +1,9 @@
 # Mihomo Party ClashRule（自用规则）
 
+[My-ClashRule](https://raw.githubusercontent.com/dongshull/ClashRule/main/My-ClashRule.ini)
+[My-New-ClashRule](https://raw.githubusercontent.com/dongshull/ClashRule/main/My-New-ClashRule.ini)
+[Custom_Clash](https://raw.githubusercontent.com/dongshull/ClashRule/main/Other-rules/Custom_OpenClash_Rules/Custom_Clash.ini)
+
 ## 未经允许请勿随意传播
 
 >## [Mihomo Party](https://github.com/mihomo-party-org/mihomo-party/releases)
