@@ -103,3 +103,5 @@ payload:
   - DOMAIN-SUFFIX,ina.ntp.org.cn
 ## > Windows提供的ntp服务
   - DOMAIN-SUFFIX,time.windows.com
+## > ubuntu提供的ntp服务
+  - DOMAIN-SUFFIX,ntp.ubuntu.com

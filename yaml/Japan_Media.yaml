@@ -1,0 +1,204 @@
+payload:
+# NAME: AbemaTV
+  - DOMAIN-SUFFIX,abema-tv.com
+  - DOMAIN-SUFFIX,abema.io
+  - DOMAIN-SUFFIX,abema.tv
+  - DOMAIN-SUFFIX,abematv.akamaized.net
+  - DOMAIN-SUFFIX,adx.promo
+  - DOMAIN-SUFFIX,ameba.jp
+  - DOMAIN-SUFFIX,amebame.com
+  - DOMAIN-SUFFIX,amebaownd.com
+  - DOMAIN-SUFFIX,amebaowndme.com
+  - DOMAIN-SUFFIX,ameblo.jp
+  - DOMAIN-SUFFIX,bucketeer.jp
+  - DOMAIN-SUFFIX,d1otoma47x30pg.cloudfront.net
+  - DOMAIN-SUFFIX,d2wy8f7a9ursnm.cloudfront.net
+  - DOMAIN-SUFFIX,dokusho-ojikan.jp
+  - DOMAIN-SUFFIX,ds-linear-abematv.akamaized.net
+  - DOMAIN-SUFFIX,ds-vod-abematv.akamaized.net
+  - DOMAIN-SUFFIX,hayabusa.dev
+  - DOMAIN-SUFFIX,hayabusa.io
+  - DOMAIN-SUFFIX,hayabusa.media
+  - DOMAIN-SUFFIX,linear-abematv.akamaized.net
+  - DOMAIN-SUFFIX,vod-abematv.akamaized.net
+  - DOMAIN-SUFFIX,winticket.jp
+  - DOMAIN-KEYWORD,abematv.akamaized.net
+
+# NAME: Niconico
+  - DOMAIN-SUFFIX,dmc.nico
+  - DOMAIN-SUFFIX,nicodic.jp
+  - DOMAIN-SUFFIX,nicomanga.jp
+  - DOMAIN-SUFFIX,niconico.com
+  - DOMAIN-SUFFIX,nicoseiga.jp
+  - DOMAIN-SUFFIX,nicovideo.jp
+  - DOMAIN-SUFFIX,nimg.jp
+  - DOMAIN-SUFFIX,simg.jp
+  - DOMAIN-SUFFIX,socdm.com
+  - DOMAIN-KEYWORD,niconico
+
+# NAME: DMM
+  - DOMAIN-SUFFIX,akabeesoft2.com
+  - DOMAIN-SUFFIX,akabeesoft3.com
+  - DOMAIN-SUFFIX,akatsukiworks.com
+  - DOMAIN-SUFFIX,alicesoft.com
+  - DOMAIN-SUFFIX,api-p.videomarket.jp
+  - DOMAIN-SUFFIX,bluekai.com
+  - DOMAIN-SUFFIX,cosmiccute.com
+  - DOMAIN-SUFFIX,ddo.jp
+  - DOMAIN-SUFFIX,dmm-extension.com
+  - DOMAIN-SUFFIX,dmm.co.jp
+  - DOMAIN-SUFFIX,dmm.com
+  - DOMAIN-SUFFIX,dmm.hk
+  - DOMAIN-SUFFIX,dmmapis.com
+  - DOMAIN-SUFFIX,dmmrex.com
+  - DOMAIN-SUFFIX,fout.jp
+  - DOMAIN-SUFFIX,gmossp-sp.jp
+  - DOMAIN-SUFFIX,hibiki-site.com
+  - DOMAIN-SUFFIX,i-mobile.co.jp
+  - DOMAIN-SUFFIX,im-apps.net
+  - DOMAIN-SUFFIX,impact-ad.jp
+  - DOMAIN-SUFFIX,ladsp.com
+  - DOMAIN-SUFFIX,microad.co.jp
+  - DOMAIN-SUFFIX,microad.jp
+  - DOMAIN-SUFFIX,minori.ph
+  - DOMAIN-SUFFIX,navismithapis-cdn.com
+  - DOMAIN-SUFFIX,socdm.com
+  - DOMAIN-SUFFIX,tenco.cc
+  - DOMAIN-SUFFIX,wheel-soft.com
+  - IP-CIDR,125.6.189.7/32,no-resolve
+  - IP-CIDR,203.104.209.7/32,no-resolve
+
+# NAME: music.jp
+  - DOMAIN-SUFFIX,music.jp
+  - DOMAIN-SUFFIX,music-book.jp
+
+# NAME: paravi
+  - DOMAIN-SUFFIX,paravi.jp
+  - DOMAIN-KEYWORD,paravi
+
+# NAME: telasa
+  - DOMAIN-SUFFIX,videopass.jp
+  - DOMAIN-SUFFIX,d2lmsumy47c8as.cloudfront.net
+  - DOMAIN-SUFFIX,api-videopass-anon.kddi-video.com
+  - DOMAIN-SUFFIX,theater.kddi-video.com
+  - DOMAIN-SUFFIX,api-payment.kddi-video.com
+  - DOMAIN-SUFFIX,api-videopass.kddi-video.com
+  - DOMAIN-SUFFIX,api-videopass-playback.kddi-video.com
+  - DOMAIN-SUFFIX,showroom.kddi-video.com
+  - DOMAIN-SUFFIX,cf-assets.synapse-kddi.net
+  - DOMAIN-SUFFIX,image-cf.kddi-video.com
+  - DOMAIN-SUFFIX,api-videopass-login.kddi-video.com
+  - DOMAIN-SUFFIX,api.reproio.com
+  - DOMAIN-SUFFIX,telasa.jp
+  - DOMAIN-SUFFIX,surrit.com
+  - DOMAIN-SUFFIX,missav.com
+  - DOMAIN-KEYWORD,telasa
+
+# NAME: U-NEXT
+  - DOMAIN-SUFFIX,unext.jp
+  - DOMAIN-SUFFIX,hnext.jp
+  - DOMAIN-SUFFIX,nxtv.jp
+  - DOMAIN-KEYWORD,hnext
+  - DOMAIN-KEYWORD,unext
+
+# NAME: TVer
+  - DOMAIN-SUFFIX,dogatch.jp
+  - DOMAIN-SUFFIX,edge.api.brightcove.com
+  - DOMAIN-SUFFIX,gorin.jp
+  - DOMAIN-SUFFIX,screens-lab.jp
+  - DOMAIN-SUFFIX,tver.co.jp
+  - DOMAIN-SUFFIX,tver.jp
+  - DOMAIN-SUFFIX,players.brightcove.net
+  - DOMAIN-KEYWORD,TVer
+
+# NAME: GYAO！
+  - DOMAIN-SUFFIX,gyao.yahoo.co.jp
+  - DOMAIN-KEYWORD,gyao
+
+# NAME: WOWOW
+  - DOMAIN-SUFFIX,wowow.co.jp
+  - DOMAIN-KEYWORD,wowow
+
+# NAME: videomarket
+  - DOMAIN-SUFFIX,videomarket.jp
+  - DOMAIN-KEYWORD,videomarket
+
+# NAME: radiko
+  - DOMAIN-SUFFIX,radiko.jp
+  - DOMAIN-SUFFIX,radionikkei.jp
+  - DOMAIN-SUFFIX,smartstream.ne.jp
+  - DOMAIN-KEYWORD,radiko
+
+# NAME: FOD
+  - DOMAIN-SUFFIX,geocontrol1.stream.ne.jp
+  - DOMAIN-SUFFIX,fod.azurewebsites.net
+  - DOMAIN-SUFFIX,movie-api.infuse.im
+  - DOMAIN-SUFFIX,fujitvfod.silveregg.net
+  - DOMAIN-SUFFIX,tokyo.in.treasuredata.com
+  - DOMAIN-SUFFIX,fujitv.co.jp
+  - DOMAIN-SUFFIX,stream.ne.jp
+  - DOMAIN,measure.ic.tver.jp
+
+
+# NAME: HuluJP
+  - DOMAIN-SUFFIX,prod.hjholdings.tv
+  - DOMAIN-SUFFIX,hulujp.silveregg.net
+  - DOMAIN-SUFFIX,happyon.jp
+  - DOMAIN-SUFFIX,hjholdings.jp
+  - DOMAIN-SUFFIX,hulu.jp
+  - DOMAIN-SUFFIX,streaks.jp
+  - DOMAIN-SUFFIX,yb.uncn.jp
+  - DOMAIN-KEYWORD,hulujp
+
+# NAME: Karaoke@DAM
+  - DOMAIN-SUFFIX,clubdam.com
+  - DOMAIN-KEYWORD,clubdam
+
+# NAME: J:com On Demand
+  - DOMAIN-SUFFIX,zaq.ne.jp
+  - DOMAIN-SUFFIX,myjcom.jp
+  - DOMAIN-SUFFIX,jcom.co.jp
+
+# NAME: Games
+  - DOMAIN-SUFFIX,colorfulpalette.org
+  - DOMAIN-SUFFIX,cygames.jp
+  - DOMAIN-SUFFIX,cygames.co.jp
+  - DOMAIN-SUFFIX,konosubafd.jp
+  - DOMAIN-SUFFIX,worldflipper.jp
+  - DOMAIN-SUFFIX,prd-priconne-redive.akamaized.net
+  - IP-CIDR,203.104.209.0/24,no-resolve
+
+# NAME: Rakuten TV
+  - DOMAIN-SUFFIX,ebates.com
+  - DOMAIN-SUFFIX,infoseek.co.jp
+  - DOMAIN-SUFFIX,o50.jp
+  - DOMAIN-SUFFIX,r10.to
+  - DOMAIN-SUFFIX,r10s.com
+  - DOMAIN-SUFFIX,r10s.jp
+  - DOMAIN-SUFFIX,rakuten-static.com
+  - DOMAIN-SUFFIX,rakuten.ca
+  - DOMAIN-SUFFIX,rakuten.co.jp
+  - DOMAIN-SUFFIX,rakuten.com
+  - DOMAIN-SUFFIX,rakuten.com.tw
+  - DOMAIN-SUFFIX,rakuten.ne.jp
+  - DOMAIN-SUFFIX,rakuten.tw
+  - DOMAIN-SUFFIX,rclon.com
+  - DOMAIN-SUFFIX,rebates.jp
+  - DOMAIN-SUFFIX,showtime.co.jp
+  - DOMAIN-SUFFIX,viber.co.jp
+  - DOMAIN-SUFFIX,viber.com
+
+# NAME: docomo
+  - DOMAIN-SUFFIX,beetv.jp
+  - DOMAIN-SUFFIX,docomo.ne.jp
+  - DOMAIN-SUFFIX,dmkt-sp.jp
+  - DOMAIN-SUFFIX,js.stripe.com
+  - DOMAIN-SUFFIX,jp.adventurekk.com
+  - DOMAIN-SUFFIX,js.tappaysdk.com
+  - DOMAIN-SUFFIX,m.stripe.network
+  - DOMAIN-SUFFIX,ntt.com
+  - DOMAIN-SUFFIX,nttdocomo.co.jp
+  - DOMAIN-SUFFIX,jp
+  - DOMAIN-KEYWORD,docomo
+  - DOMAIN-KEYWORD,ntt
+  - DOMAIN-KEYWORD,+.jp

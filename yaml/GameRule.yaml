@@ -1,0 +1,26 @@
+# NAME: GameRule
+# AUTHOR: xuanranran
+# UPDATED: 2023年2月12日12:49:42
+# IP-CIDR: 9
+# DOMAIN-KEYWORD: 1
+# TOTAL: 10
+payload:
+  - DOMAIN-SUFFIX,auone.jp
+  - DOMAIN-SUFFIX,prod.jimdo.systems
+  - DOMAIN-SUFFIX,cdnjs.cloudflare.com
+  - DOMAIN-SUFFIX,d3jemebx5aub7p.cloudfront.net
+  - DOMAIN-SUFFIX,jimdo.com
+  - DOMAIN-SUFFIX,jimcdn.com
+  - DOMAIN-SUFFIX,jimstatic.com
+  - DOMAIN-KEYWORD,geforce
+  - DOMAIN-KEYWORD,nvidia
+  - DOMAIN-KEYWORD,roblox
+  - IP-CIDR,8.42.102.0/24,no-resolve
+  - IP-CIDR,24.51.0.0/16,no-resolve
+  - IP-CIDR,64.125.0.0/16,no-resolve
+  - IP-CIDR,66.22.0.0/16,no-resolve
+  - IP-CIDR,77.111.0.0/16,no-resolve
+  - IP-CIDR,80.84.0.0/16,no-resolve
+  - IP-CIDR,210.17.0.0/16,no-resolve
+  - IP-CIDR,221.110.0.0/16,no-resolve
+  - IP-CIDR,13.104.100.0/24,no-resolve

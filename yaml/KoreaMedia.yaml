@@ -1,0 +1,48 @@
+payload:
+# watcha
+  - DOMAIN-SUFFIX,watcha.team
+  - DOMAIN-SUFFIX,watcha.com
+  - DOMAIN-SUFFIX,watcha.co.kr
+  - DOMAIN-SUFFIX,watcha.zendesk.com
+  - DOMAIN-SUFFIX,zdassets.com
+  - DOMAIN-SUFFIX,amz.wtchn.net
+  - DOMAIN-SUFFIX,watch-cdn.product.api.espn.com
+  - DOMAIN-KEYWORD,watcha
+
+# wavve
+  - DOMAIN-SUFFIX,apis.pooq.co.kr
+  - DOMAIN-SUFFIX,pooq3-static-json.pooq.co.kr
+  - DOMAIN-SUFFIX,wavve.com
+  - DOMAIN-KEYWORD,wavve
+
+# tving
+  - DOMAIN-SUFFIX,launches.appsflyer.com
+  - DOMAIN-SUFFIX,sdk.iad-05.braze.com
+  - DOMAIN-SUFFIX,graph.facebook.com
+  - DOMAIN-SUFFIX,ipv4.cws.conviva.com
+  - DOMAIN-SUFFIX,ipv6.cws.conviva.com
+  - DOMAIN-SUFFIX,cj.drmkeyserver.com
+  - DOMAIN-SUFFIX,image.pip.cjenm.com
+  - DOMAIN-SUFFIX,hqkoz2vau9.execute-api.ap-northeast-2.amazonaws.com
+  - DOMAIN-SUFFIX,tving.com
+  - DOMAIN-KEYWORD,tving
+
+# coupang
+  - DOMAIN-SUFFIX,coupang.com
+  - DOMAIN-SUFFIX,coupangplay.com
+  - DOMAIN-KEYWORD,coupang
+
+# naver
+  - DOMAIN-SUFFIX,naver.com
+  - DOMAIN-SUFFIX,smartmediarep.com
+
+# afreecatv
+  - DOMAIN-SUFFIX,afreecatv.com
+  - DOMAIN-KEYWORD,afreeca
+  - DOMAIN-KEYWORD,afreecatv
+
+# KBS
+  - DOMAIN-SUFFIX,vod.kbs.co.kr
+  - DOMAIN-SUFFIX,kbs.co.kr
+  - DOMAIN-SUFFIX,kr
+  - DOMAIN-KEYWORD,.kr
