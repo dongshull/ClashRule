@@ -1,0 +1,48 @@
+payload:
+  - DOMAIN,dns.alidns.com                # 阿里云 DNS
+  - DOMAIN,dns.114dns.com                # 114 DNS
+  - DOMAIN,dns.dnspod.com                # DNSPod
+  - DOMAIN,dns.360.cn                    # 360 DNS
+  - DOMAIN,dns.family.adguard.com        # AdGuard DNS
+  - DOMAIN,dns.tencent.com               # 腾讯 DNS
+  - DOMAIN,dns.jcloud.com                # 京东云 DNS
+  - DOMAIN,rubyfish.cn                   # Rubyfish DNS
+  - DOMAIN,dns.pudn.com                  # Pudn DNS
+  - DOMAIN-SUFFIX,doh.pub                # DoH 公共 DNS
+  - DOMAIN,dns.hichina.com               # 万网 DNS
+  - DOMAIN,dns.china.com.cn              # 中国互联网 DNS
+  - DOMAIN,dns.sohunet.com               # 搜狐 DNS
+  - DOMAIN,dns.baidupcs.com              # 百度云 DNS
+  - DOMAIN,dns.netease.com               # 网易 DNS
+  - DOMAIN,dns.189.cn                    # 中国移动 DNS（189）
+  - DOMAIN,dns1.chinatelecom.com         # 中国电信 DNS
+  - DOMAIN,dns2.chinatelecom.com         # 备用中国电信 DNS
+  - DOMAIN,dns1.chinaunicom.cn           # 中国联通 DNS
+  - DOMAIN,dns2.chinaunicom.cn           # 备用中国联通 DNS
+  - DOMAIN,dns1.189.cn                   # 中国移动 DNS
+  - DOMAIN,dns2.189.cn                   # 备用中国移动 DNS
+  - IP-CIDR,223.5.5.5/32                 # 阿里云 DNS IP
+  - IP-CIDR,223.6.6.6/32                 # 阿里云 DNS IP
+  - IP-CIDR,114.114.114.114/32           # 114 DNS IP
+  - IP-CIDR,114.114.115.115/32           # 备用 114 DNS IP
+  - IP-CIDR,180.76.76.76/32              # 百度 DNS IP
+  - IP-CIDR,101.226.4.6/32               # 中国电信 DNS IP
+  - IP-CIDR,180.101.49.11/32             # 中国联通 DNS IP
+  - IP-CIDR,210.2.4.8/32                 # 中国移动 DNS IP
+  - IP-CIDR,218.2.2.2/32                 # 江苏本地 DNS IP
+  - IP-CIDR,218.4.4.4/32                 # 备用江苏本地 DNS IP
+  - IP-CIDR,119.29.29.29/32              # DNSPOD IP
+  - IP-CIDR,119.29.107.85/32             # 备用 DNSPOD IP
+  - IP-CIDR,202.99.160.1/32              # 万网 DNS IP
+  - IP-CIDR,219.141.136.10/32            # 搜狐 DNS IP
+  - IP-CIDR,202.108.22.5/32              # 百度云 DNS IP
+  - IP-CIDR,222.75.11.75/32              # 网易 DNS IP
+  - IP-CIDR,218.30.10.10/32              # 189 DNS IP
+  - IP-CIDR,240e:5a::6666/128            # 江苏本地 IPv6 DNS IP
+  - IP-CIDR,240e:5b::6666/128            # 备用江苏本地 IPv6 DNS IP
+  - IP-CIDR,240e:3::1/128                # 百度 DNS IPv6
+  - IP-CIDR,240e:4::1/128                # 网易 DNS IPv6
+  - IP-CIDR,240e:38::1/128               # 189 DNS IPv6
+  - IP-CIDR,240e:20::1/128               # 中国电信 IPv6 DNS
+  - IP-CIDR,240e:22::1/128               # 中国联通 IPv6 DNS
+  - IP-CIDR,240e:30::1/128               # 中国移动 IPv6 DNS
