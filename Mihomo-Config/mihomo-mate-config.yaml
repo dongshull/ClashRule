@@ -1,0 +1,2035 @@
+mixed-port: 7890               # 混合端口，用于代理流量的入口，7890是常见的Clash代理端口
+allow-lan: true                # 是否允许局域网设备访问代理，true表示允许     
+mode: Rule                     # 工作模式，"Rule"表示使用规则来确定流量是否走代理
+skip-auth-prefixes:            # 免认证的IP前缀，常用于本地回环地址
+  - 127.0.0.1/8                # 本地回环地址，IPv4的127.0.0.1，/8表示掩码范围
+  - ::1/128                    # 本地回环地址，IPv6的::1，/128表示单一地址
+lan-allowed-ips:               # 允许访问代理的局域网IP范围
+  - 0.0.0.0/0                  # 允许所有IPv4地址访问代理
+  - ::/0                       # 允许所有IPv6地址访问代理
+log-level: info                # 日志级别，"info"表示记录信息、警告和错误日志
+external-controller: 0.0.0.0:9090  # 外部控制接口的地址和端口，允许通过9090端口远程管理
+external-ui: /root/.config/ui/ui #外部用户界面
+external-ui-name: xd
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+geodata-mode: true             # 是否启用地理数据模式，true表示开启
+geodata-loader: standard       # 使用标准的地理数据加载器
+geo-auto-update: true          # 是否自动更新地理数据，true表示开启自动更新
+geo-update-interval: 24        # 地理数据的更新间隔时间，单位是小时
+ipv6: true                     # 是否启用IPv6，true表示支持IPv6
+geox-url:                      # 地理数据的下载地址
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"  # GeoIP数据库下载地址
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"  # GeoSite规则数据下载地址
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"  # MaxMind数据库下载地址，用于国家级的地理定位
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"  # ASN数据库下载地址，用于ASN信息的解析
+unified-delay: true            # 统一延迟模式，true表示开启，可以优化多路TCP流量的传输延迟
+tcp-concurrent: true           # 是否允许TCP并发，true表示开启并发连接，提升效率
+dns:
+  enable: true  # 启用 DNS 功能
+  prefer-h3: true  # 优先使用 HTTP/3（如果 DNS 服务器支持）
+  use-hosts: false  # 使用系统 hosts 文件解析域名
+  use-system-hosts: false  # 使用系统自带的 hosts 文件
+  respect-rules:  true # 不强制执行策略规则（false 为默认值）
+  listen: 0.0.0.0:5353  # 监听所有网络接口上的 5353 端口进行 DNS 请求
+  ipv6: true  # 启用对 IPv6 的支持
+  ipv6-timeout: 300  # IPv6 请求的超时时间为 300 毫秒
+
+  default-nameserver:
+    - 218.85.152.99  # 福建本地 DNS 服务器
+    - 218.85.157.99  # 备用福建本地 DNS 服务器
+    - 240e:14:6000::1  # 福建本地 IPv6 DNS 服务器
+    - 240e:14:e000::1  # 福建备用 IPv6 DNS 服务器
+
+  enhanced-mode: fake-ip  # 使用 fake-ip 模式增强域名解析
+  fake-ip-range: 198.18.0.1/16  # 假 IP 模式使用的 IP 地址范围（专用于内网通信）
+  fake-ip-filter:
+    - '*.lan'  # 局域网域名不使用假 IP
+    - "+.local"  # `.local` 域名不使用假 IP
+  fake-ip-filter-mode: blacklist  # 使用黑名单模式
+
+  nameserver:
+    - 218.85.152.99  # 默认福建本地 DNS 服务器，主要用于国内解析
+    - 218.85.157.99  # 备用福建本地 DNS
+    - 240e:14:6000::1  # 福建本地 IPv6 DNS 服务器
+    - 240e:14:e000::1  # 福建备用 IPv6 DNS 服务器
+    - 8.8.8.8  # Google 公共 DNS，用于国外解析
+    - tls://1.1.1.1:853  # Cloudflare DNS，使用 TLS 端口 853 进行加密解析
+    - https://8.8.8.8/dns-query#ecs=1.1.1.1/24  # Google DNS，支持客户端子网扩展
+    - https://doh.pub/dns-query  # 通过 DoH 公共 DNS 进行解析
+    - https://dns.alidns.com/dns-query#h3=true  # 阿里云 DNS，支持 HTTP/3 协议
+    - https://mozilla.cloudflare-dns.com/dns-query#DNS&h3=true  # Cloudflare DoH，支持 HTTP/3
+    - dhcp://eth0  # 从网络接口 en0 获取 DHCP 提供的 DNS 服务器
+    - quic://dns.adguard.com:784  # AdGuard DNS，使用 QUIC 协议解析
+    - 2001:4860:4860::8888  # Google IPv6 DNS
+    - 2001:4860:4860::8844  # Google IPv6 备用 DNS
+    - 2606:4700:4700::1111  # Cloudflare IPv6 DNS
+    - 2606:4700:4700::1001  # Cloudflare IPv6 备用 DNS
+
+  nameserver-policy:
+    "geosite:cn":
+      - 218.85.152.99  # 对国内流量使用福建本地 DNS
+      - 218.85.157.99  # 使用备用福建本地 DNS
+      - 240e:14:6000::1  # 福建本地 IPv6 DNS 服务器
+      - 240e:14:e000::1  # 福建备用 IPv6 DNS 服务器
+    "geosite:gfw":
+      - 8.8.8.8  # 对国外流量使用 Google DNS
+      - tls://1.1.1.1:853  # 也可以使用 Cloudflare DNS
+      - 2001:4860:4860::8888  # Google IPv6 DNS
+      - 2001:4860:4860::8844  # Google IPv6 备用 DNS
+      - 2606:4700:4700::1111  # Cloudflare IPv6 DNS
+      - 2606:4700:4700::1001  # Cloudflare IPv6 备用 DNS
+    "geosite:category-ads-all": rcode://success  # 广告类域名直接返回成功，不进行解析
+    "www.baidu.com,+.google.cn": [218.2.2.2, 218.4.4.4]  # 百度和 Google 中国域名使用江苏本地 DNS
+
+  fallback:
+    - tls://8.8.4.4  # 备用 DNS，Google DNS 加密解析（TLS 端口 853）
+    - tls://1.1.1.1  # 备用 DNS，Cloudflare DNS 加密解析（TLS 端口 853）
+
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query  # 代理服务器使用公共 DoH 解析
+
+  fallback-filter:
+    geoip: true  # 启用 geoip 功能
+    geoip-code: CN  # 当目标 IP 在中国时不使用 fallback DNS
+    geosite:
+      - gfw  # 根据 geosite:gfw 规则进行判断
+
+  ipcidr:
+    - 0.0.0.0/8  # 排除 IP 范围，通常是保留地址
+    - 10.0.0.0/8  # 排除私有网络地址
+    - 100.64.0.0/10  # 排除共享地址空间
+    - 127.0.0.0/8  # 排除本地主机地址范围
+    - 169.254.0.0/16  # 排除链路本地地址
+    - 172.16.0.0/12  # 排除私有网络地址
+    - 192.0.0.0/24  # 排除 IETF 协议定义地址
+    - 192.0.2.0/24  # 排除测试网络地址
+    - 192.88.99.0/24  # 排除 6to4 中继器地址
+    - 192.168.0.0/16  # 排除私有网络地址
+    - 198.18.0.0/15  # 排除内部网络基准测试地址
+    - 198.51.100.0/24  # 排除测试网络地址
+    - 203.0.113.0/24  # 排除测试网络地址
+    - 224.0.0.0/4  # 排除多播地址范围
+    - 240.0.0.0/4  # 排除保留地址范围
+    - 255.255.255.255/32  # 排除广播地址
+
+  domain:
+    - "+.google.com"  # 允许的 Google 域名
+    - "+.facebook.com"  # 允许的 Facebook 域名
+    - "+.youtube.com"  # 允许的 YouTube 域名
+    - "+.githubusercontent.com"  # 允许的 GitHub 内容域名
+    - "+.googlevideo.com"  # 允许的 Google 视频域名
+    - "+.msftconnecttest.com"  # 允许的 Microsoft 连接测试域名
+    - "+.msftncsi.com"  # 允许的 Microsoft NCSI 测试域名
+
+proxy-providers:               # 代理提供者配置，指定代理来源
+  airport-1:                         # 名为“airport-1”的代理组
+    type: http                  # 代理类型为HTTP
+    # 修改为你的 Clash 订阅链接
+    url: https://xxxx.app/api/v1/client/subscribe?token=xxxxxxxxxxx            # 订阅链接，用于获取代理节点信息
+    path: ./profiles/airport-1.yml    # 保存订阅数据的文件路径
+    interval: 86400             # 订阅更新的时间间隔，单位为秒，这里为一天（86400秒）
+    health-check:               # 健康检查配置，用于定期检查代理的可用性
+      enable: true              # 启用健康检查
+      interval: 1800            # 健康检查的时间间隔，1800秒即30分钟
+      url: https://1.1.1.1/generate_204  # 健康检查的目标URL，返回204状态码代表无内容，用于快速检查网络连通性
+  airport-2:                       # 名为“airport-3”的代理组
+    type: http                  # 代理类型为HTTP
+    # 修改为你的 Clash 订阅链接
+    url: https://xxxx.app/api/v1/client/subscribe?token=xxxxxxxxxxx                       # 订阅链接，用于获取代理节点信息
+    path: ./profiles/airport-2.yml  # 保存订阅数据的文件路径
+    interval: 86400             # 订阅更新的时间间隔，一天（86400秒）
+    health-check:               # 健康检查配置，用于定期检查代理的可用性
+      enable: true              # 启用健康检查
+      interval: 1800            # 健康检查的时间间隔，1800秒即30分钟
+      url: https://1.1.1.1/generate_204  # 健康检查的目标URL
+  airport-3:                       # 名为“airport-3”的代理组
+    type: http                  # 代理类型为HTTP
+    # 修改为你的 Clash 订阅链接
+    url: https://xxxx.app/api/v1/client/subscribe?token=xxxxxxxxxxx                       # 订阅链接，用于获取代理节点信息
+    path: ./profiles/airport-3.yml  # 保存订阅数据的文件路径
+    interval: 86400             # 订阅更新的时间间隔，一天（86400秒）
+    health-check:               # 健康检查配置，用于定期检查代理的可用性
+      enable: true              # 启用健康检查
+      interval: 1800            # 健康检查的时间间隔，1800秒即30分钟
+      url: https://1.1.1.1/generate_204  # 健康检查的目标URL
+
+proxy-groups:                   # 代理组配置，定义代理选择和使用方式
+  - name: 香港节点            # 代理组的名称，表示这是一个香港节点组
+    type: url-test              # 组的类型为"URL测试"，会自动选择最快的代理节点
+    tolerance: 100              # 容忍的延迟值，单位为毫秒，延迟超过该值会被视为不理想
+    interval: 1800              # 测试间隔，单位为秒，1800秒即30分钟
+    lazy: false                 # 是否懒加载，false表示每次都立即测试节点
+    use:
+      - airport-1                    # 使用的代理提供者，引用之前定义的“airport-3”代理组
+      - airport-3
+      - airport-2                
+    filter: "(Hong.*?Kong|\bHKT\b|\bHKBN\b|\bHGC\b|\bWTT\b|\bCMI\b|[^-]港|香港|HK|Hong Kong|🇭🇰)"                     # 使用正则表达式筛选代理名称中包含与香港相关的关键词的节点
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/hong-kong.gif
+
+  - name: 台湾节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(Taiwan|新北|彰化|\bCHT\b|台湾|台灣|[^-]台|\bHINET\b|TW|🇹🇼)"
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/taiwan.gif
+      
+  - name: 新加坡节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(Singapore|新加坡|狮城|SG|🇸🇬)"
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/singapore.gif
+        
+  - name: 日本节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(JP|Japan|Tokyo|Osaka|Saitama|日本|东京|櫻花雲|東京|大阪|埼玉|🇯🇵)"
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/japan.gif
+  - name: 韩国节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(Korea|首尔|韩|韓|韩国|KR|🇰🇷)"
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/south-korea.gif
+
+  - name: 印度节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(IN|India|IND|印度|孟买|加尔各答|贾坎德|泰米尔纳德|🇮🇳)"
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/india.gif
+
+  - name: 美国节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(America|United.*?States|美国|美國|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|United States|🇺🇸)"
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-states.gif
+
+  - name: 英国节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(GB|GBR|UK|England|United.*?Kingdom|London|英国|[^-]英|伦敦|🇬🇧)" 
+    exclude-filter: "(Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置)"
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-kingdom.gif
+
+  - name: 法国节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(FR|FRA|France|Paris|法国|巴黎|🇫🇷)"  
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/france.gif
+
+  - name: 德国节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(DE|Germany|DEU|法兰克福|德(國|国|意志)|中德|京德|🇩🇪)"  
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/germany.gif
+
+  - name: 巴西节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(BR|BRA|Brazil|Paulo|巴西|圣保罗|🇧🇷)"  
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/brazil.gif
+
+  - name: 澳大利亚节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(AU|AUS|Australia|Sydney|澳大利亚|澳洲|悉尼|🇦🇺)"  
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/australia.gif
+
+  - name: 荷兰节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(NLD|Netherlands|荷兰|阿姆斯特丹|尼德兰|🇳🇱)"  
+    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/netherlands.gif
+
+  - name: 迪拜节点
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+      - airport-3
+      - airport-2
+    filter: "(AE|UAE|United Arab Emirates|Dubai|阿联酋|迪拜|阿拉伯联合酋长国|🇦🇪)" 
+    icon: 
+
+  - name: 🎞️ V6代理
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-3
+      - airport-2
+    filter: "(三夫|無間道|花樣年華|重慶森林|七月俏佳人|八月の狂詩曲)"  
+
+  - name: 🎞️ 送中代理
+    type: url-test
+    tolerance: 100
+    interval: 1800
+    lazy: false
+    use:
+      - airport-1
+    filter: "(电信/联通|电信/移动/联通)"  
+
+  - name: 手动切换             # 代理组名称为“手动切换”，带有循环符号，用户可以手动选择代理
+    icon: https://fastly.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    type: select                 # 组的类型为“select”，表示手动选择代理
+    proxies:                     # 可供选择的代理列表
+      - 香港节点                # 香港代理节点组
+      - 台湾节点                # 台湾代理节点组
+      - 新加坡节点              # 新加坡代理节点组
+      - 日本节点                # 日本代理节点组
+      - 韩国节点                # 韩国代理节点组
+      - 印度节点                # 印度代理节点组
+      - 美国节点                # 美国代理节点组
+      - 英国节点                # 英国代理节点组
+      - 法国节点                # 法国代理节点组
+      - 德国节点                # 德国代理节点组
+      - 巴西节点                # 巴西代理节点组
+      - 澳大利亚节点            # 澳大利亚代理节点组
+      - 荷兰节点                # 荷兰代理节点组
+      - 迪拜节点                # 迪拜代理节点组
+
+  - name: 🧬 国内DNS
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换  
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🧬 Cloudflare
+    type: select
+    proxies:
+      - 香港节点
+      - 手动切换  
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🧬 海外DNS
+    type: select
+    proxies:
+      - 香港节点
+      - 手动切换  
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎫 PT直连
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换  
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Google
+    icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Bing
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Yahoo
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: ⏰ 时间校准
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换    
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🗺 Speedtest
+    type: select
+    proxies:
+      - DIRECT 
+      - 手动切换     
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🐾 Github
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: OpenAI
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 聊天软件
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎙 Discord
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: YouTube
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
+    type: select
+    proxies:
+      - 🎞️ 送中代理
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Netflix
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    type: select
+    proxies:
+      - 新加坡节点
+      - 手动切换
+      - DIRECT 
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: DisneyPlus
+    type: select
+    proxies:
+      - 香港节点
+      - 手动切换
+      - DIRECT      
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 巴哈姆特
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
+    type: select
+    proxies:
+      - 台湾节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: viuTV
+    type: select
+    proxies:
+      - 香港节点
+      - 手动切换
+      - DIRECT
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: KKTV
+    type: select
+    proxies:
+      - 台湾节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 韩国媒体
+    type: select
+    proxies:
+      - 韩国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 日本媒体
+    type: select
+    proxies:
+      - 日本节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: AppleTV+
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: HBOGO
+    type: select
+    proxies:      
+      - 香港节点
+      - 手动切换
+      - DIRECT
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: NowTV
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: myTVSUPER
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: HBOMAX
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: HuluUSA
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Espn
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Fox
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: ParamountPlus
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Peacock
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: PrimeVideo
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: EMBY
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: Dazn
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: DiscoveryPlus
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎶 TikTok
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎵 Spotify
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎵 AppleMusic
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎵 TIDAL
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎵 Qobuz
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 爱奇艺
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换 
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: B站港澳台
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: B站东南亚
+    type: select
+    proxies:
+      - 新加坡节点
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 国外流媒体
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 国内流媒体
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: ☁️ iCloud
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎥 iTunes
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🔖 OneDrive
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🧩 微软服务
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎮 游戏平台
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换   
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🎮 游戏下载
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 📪 邮件服务
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 国外网站
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 国内网站
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换    
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 手动切换
+      - DIRECT      
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 印度节点
+      - 美国节点
+      - 英国节点
+      - 法国节点
+      - 德国节点
+      - 巴西节点
+      - 澳大利亚节点
+      - 荷兰节点
+      - 迪拜节点
+rules:                          # 规则定义，用于指定不同域名或服务走不同的代理节点
+  - RULE-SET,ChinaDNS,🧬 国内DNS  # 使用规则集 ChinaDNS，处理外部DNS解析
+  - RULE-SET,ForeignDNS,🧬 海外DNS  # 使用规则集 ForeignDNS，处理外部DNS解析
+  - RULE-SET,PT-DIRECT,🎫 PT直连    # 使用规则集 PT-DIRECT，直连私有跟踪器（PT）流量
+  - RULE-SET,CloudflareDomain,🧬 Cloudflare  # 使用规则集 CloudflareDomain，处理Cloudflare相关域名
+  - DOMAIN-SUFFIX,torrentleech.org,香港节点  # 特定域名后缀走香港节点代理
+  - DOMAIN-SUFFIX,metacubex.one,香港节点    # metacubex.one 走香港节点代理
+  - DOMAIN-SUFFIX,v2rayssr.com,香港节点    # v2rayssr.com 走香港节点代理
+  - DOMAIN-SUFFIX,gitbook.io,香港节点     # gitbook.io 走香港节点代理
+  - DOMAIN-SUFFIX,monikadesign.uk,香港节点 # monikadesign.uk 走香港节点代理
+  - DOMAIN-SUFFIX,byr.pt,🎞️ V6代理           # byr.pt 走IPv6代理
+  - DOMAIN-SUFFIX,themoviedb.org,香港节点  # themoviedb.org 走香港节点代理
+  - DOMAIN-SUFFIX,tmdb.org,香港节点       # tmdb.org 走香港节点代理
+  - DOMAIN-SUFFIX,recmata.net,香港节点    # recmata.net 走香港节点代理
+  - DOMAIN-SUFFIX,unifab.ai,香港节点      # unifab.ai 走香港节点代理
+  - GEOSITE,Telegram,聊天软件              # Telegram相关域名走聊天软件代理
+  - GEOSITE,Twitter,聊天软件               # Twitter相关域名走聊天软件代理
+  - GEOSITE,instagram,聊天软件             # Instagram相关域名走聊天软件代理
+  - GEOSITE,Facebook,聊天软件              # Facebook相关域名走聊天软件代理
+  - GEOSITE,Meta,聊天软件                  # Meta相关域名走聊天软件代理
+  - GEOSITE,Twitch,🎮 游戏平台                # Twitch相关域名走游戏平台代理
+  - RULE-SET,NTP-Service,⏰ 时间校准          # 使用规则集 NTP-Service 处理时间校准
+  - RULE-SET,OneDrive,🔖 OneDrive            # 使用规则集 OneDrive 处理OneDrive相关流量
+  - RULE-SET,Speedtest,🗺 Speedtest          # 使用规则集 Speedtest 处理Speedtest相关流量
+  - RULE-SET,Discord,🎙 Discord              # 使用规则集 Discord 处理Discord相关流量
+  - RULE-SET,Discord_IP-CIDR,🎙 Discord      # 使用规则集 Discord_IP-CIDR 处理Discord IP相关流量
+  - RULE-SET,Bing,Bing                    # 使用规则集 Bing 处理Bing相关流量
+  - RULE-SET,OpenAi,OpenAI                # 使用规则集 OpenAi 处理OpenAI相关流量
+  - RULE-SET,GitHub,🐾 Github                # 使用规则集 GitHub 处理GitHub相关流量
+  - RULE-SET,Docker,🐾 Github                # 使用规则集 Docker 处理Docker相关流量
+  - RULE-SET,Mail,📪 邮件服务                # 使用规则集 Mail 处理邮件相关服务
+  - RULE-SET,Mailru,📪 邮件服务              # 处理Mail.ru相关邮件服务
+  - RULE-SET,Protonmail,📪 邮件服务          # 处理Protonmail相关邮件服务
+  - RULE-SET,AppleMail,📪 邮件服务           # 处理AppleMail相关邮件服务
+  - RULE-SET,GameDownloadCN,🎮 游戏下载      # 使用规则集 GameDownloadCN 处理中国地区的游戏下载
+  - RULE-SET,GameDownload,🎮 游戏下载        # 使用规则集 GameDownload 处理国际游戏下载
+  - RULE-SET,GamesDownload,🎮 游戏下载       # 处理国际游戏下载服务
+  - RULE-SET,Classic,🎮 游戏平台             # 处理经典游戏相关平台
+  - RULE-SET,Nvidia,🎮 游戏平台              # 处理Nvidia相关流量
+  - RULE-SET,Game,🎮 游戏平台                # 处理游戏相关流量
+  - RULE-SET,GameRule,🎮 游戏平台            # 使用GameRule处理游戏平台流量
+  - RULE-SET,chat,聊天软件                # 处理聊天软件的流量
+  - RULE-SET,KoreaMedia,韩国媒体          # 处理韩国媒体相关流量
+  - RULE-SET,AmazonPrimeVideo,PrimeVideo # 处理Amazon Prime Video流量
+  - RULE-SET,ViuTV,viuTV                 # 处理ViuTV相关流量
+  - RULE-SET,KKTV,KKTV                   # 处理KKTV相关流量
+  - RULE-SET,LineTV,KKTV                 # 处理LineTV流量
+  - RULE-SET,friDay,巴哈姆特              # 处理巴哈姆特相关流量
+  - RULE-SET,Bahamut,巴哈姆特             # 处理巴哈姆特流量
+  - RULE-SET,HamiVideo,巴哈姆特           # 处理HamiVideo流量
+  - RULE-SET,Japan_Media,日本媒体         # 处理日本媒体流量
+  - RULE-SET,YouTube,YouTube             # 处理YouTube流量
+  - RULE-SET,TIDAL,🎵 TIDAL                 # 处理TIDAL流媒体服务
+  - RULE-SET,Disney,DisneyPlus           # 处理Disney+相关流量
+  - RULE-SET,myTVSUPER,myTVSUPER         # 处理myTVSUPER相关流量
+  - RULE-SET,PCCW,NowTV                  # 处理PCCW NowTV相关流量
+  - RULE-SET,HBOHK,HBOGO                 # 处理HBOGO（香港）流量
+  - RULE-SET,HBOAsia,HBOGO               # 处理HBOGO（亚洲）流量
+  - RULE-SET,Espn,Espn                   # 处理ESPN流量
+  - RULE-SET,Fox,Fox                     # 处理Fox流量
+  - RULE-SET,ParamountPlus,ParamountPlus # 处理Paramount+流量
+  - RULE-SET,Peacock,Peacock             # 处理Peacock流量
+  - RULE-SET,DiscoveryPlus,DiscoveryPlus # 处理Discovery+流量
+  - RULE-SET,HBO,HBOMAX                  # 处理HBO Max流量
+  - RULE-SET,MAX,HBOMAX                  # 处理Max流量
+  - RULE-SET,HuluUSA,HuluUSA             # 处理美国Hulu流量
+  - RULE-SET,emby,EMBY                   # 处理EMBY媒体服务流量
+  - RULE-SET,DAZN,Dazn                   # 处理Dazn流量
+  - RULE-SET,BiliBiliIntl,B站东南亚       # 处理哔哩哔哩东南亚站点流量
+  - RULE-SET,BiliBili,B站港澳台          # 处理哔哩哔哩港澳台站点流量
+  - RULE-SET,iQIYI,爱奇艺                # 处理爱奇艺流量
+  - RULE-SET,Spotify,🎵 Spotify             # 处理Spotify流量
+  - RULE-SET,Qobuz,🎵 Qobuz                 # 处理Qobuz流量
+  - RULE-SET,AppleMusic,🎵 AppleMusic       # 处理AppleMusic流量
+  - RULE-SET,AMusic,🎵 AppleMusic           # 处理AppleMusic流量
+  - RULE-SET,AppleTV,AppleTV+            # 处理AppleTV+流量
+  - RULE-SET,itunes,🎥 iTunes               # 处理iTunes流量
+  - RULE-SET,iTunes,🎥 iTunes               # 处理iTunes流量
+  - RULE-SET,TikTok,🎶 TikTok               # 处理TikTok流量
+  - RULE-SET,Netflix,Netflix             # 处理Netflix流量
+  - RULE-SET,iCloud,☁️ iCloud               # 处理iCloud流量
+  - RULE-SET,Microsoft,🧩 微软服务           # 处理微软相关服务流量
+  - RULE-SET,apple,🍎 苹果服务              # 处理苹果服务流量
+  - RULE-SET,Apple,🍎 苹果服务              # 处理苹果相关服务流量
+  - RULE-SET,GlobalMedia,国外流媒体       # 处理国际流媒体服务流量
+  - RULE-SET,Google,Google               # 处理Google相关流量
+  - RULE-SET,yahoo,Yahoo                 # 处理Yahoo相关流量
+  - RULE-SET,ProxyGFWlist,国外网站        # 处理国外网站的代理流量
+  - RULE-SET,ChinaMedia,国内流媒体        # 处理中国流媒体流量
+  - RULE-SET,Lan,国内网站                # 处理中国本地网络流量
+  - RULE-SET,Download,国内网站           # 处理中国网站下载流量
+  - GEOSITE,CN,国内网站                 # 处理中国国内网站流量
+  - GEOIP,CN,国内网站                  # 使用中国大陆的IP地址匹配规则处理流量
+  - MATCH,🐟 漏网之鱼                    # 匹配所有其他未被明确规则处理的流量
+
+rule-providers:                      # 规则提供者，定义从外部获取规则的源
+
+  ChinaDNS:                        # ForeignDNS规则集提供者
+    type: http                       # 规则获取方式为HTTP
+    behavior: classical              # 行为模式为 classical（经典模式）
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/dns/ChinaDNS.yaml  # 规则集的下载链接
+    path: ./providers/rule-provider_ChinaDNS.yaml  # 本地存储路径
+    interval: 86400                  # 更新间隔为86400秒（即每天）
+
+  ForeignDNS:                        # ForeignDNS规则集提供者
+    type: http                       # 规则获取方式为HTTP
+    behavior: classical              # 行为模式为 classical（经典模式）
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/dns/ForeignDNS.yaml  # 规则集的下载链接
+    path: ./providers/rule-provider_ForeignDNS.yaml  # 本地存储路径
+    interval: 86400                  # 更新间隔为86400秒（即每天）
+  
+  CloudflareDomain:                  # CloudflareDomain规则集提供者
+    type: http                       # 规则获取方式为HTTP
+    behavior: classical              # 行为模式为 classical（经典模式）
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/dns/CloudflareDomain.yaml  # 规则集的下载链接
+    path: ./providers/rule-provider_CloudflareDomain.yaml  # 本地存储路径
+    interval: 86400                  # 更新间隔为86400秒（即每天）
+
+  PT-DIRECT:                         # PT-DIRECT规则集提供者
+    type: http                       # 规则获取方式为HTTP
+    behavior: classical              # 行为模式为 classical（经典模式）
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/dns/PT-DIRECT.yaml  # 规则集的下载链接
+    path: ./providers/rule-provider_CloudflareDomain.yaml  # 本地存储路径（此处路径名称可能需要修正，与 PT-DIRECT 对应）
+    interval: 86400                  # 更新间隔为86400秒（即每天）
+  
+  NTP-Service:                       # NTP-Service规则集提供者
+    type: http                       # 规则获取方式为HTTP
+    behavior: classical              # 行为模式为 classical（经典模式）
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/NTP-Service.yaml  # 规则集的下载链接
+    path: ./providers/rule-provider_NTP-Service.yaml  # 本地存储路径
+    interval: 86400                  # 更新间隔为86400秒（即每天）
+
+  OneDrive:                          # OneDrive规则集提供者
+    type: http                       # 规则获取方式为HTTP
+    behavior: classical              # 行为模式为 classical（经典模式）
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml  # 规则集的下载链接
+    path: ./providers/rule-provider_OneDrive.yaml  # 本地存储路径
+    interval: 86400                  # 更新间隔为86400秒（即每天）
+
+  Speedtest:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
+    path: ./providers/rule-provider_Speedtest.yaml
+    interval: 86400
+  Discord:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Discord/Discord.yaml
+    path: ./providers/rule-provider_Discord.yaml
+    interval: 86400
+  Discord_IP-CIDR:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/Discord_IP-CIDR.yaml
+    path: ./providers/rule-provider_Discord_IP-CIDR.yaml
+    interval: 86400
+  Bing:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml
+    path: ./providers/rule-provider_Bing.yaml
+    interval: 86400
+  OpenAi:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/OpenAi.yaml
+    path: ./providers/rule-provider_OpenAi.yaml
+    interval: 86400
+  GitHub:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml
+    path: ./providers/rule-provider_GitHub.yaml
+    interval: 86400
+  Docker:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Docker/Docker.yaml
+    path: ./providers/rule-provider_Docker.yaml
+    interval: 86400
+  Mail:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Mail/Mail.yaml
+    path: ./providers/rule-provider_Mail.yaml
+    interval: 86400
+  Mailru:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Mailru/Mailru.yaml
+    path: ./providers/rule-provider_Mailru.yaml
+    interval: 86400
+  Protonmail:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Protonmail/Protonmail.yaml
+    path: ./providers/rule-provider_Protonmail.yaml
+    interval: 86400
+  AppleMail:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail.yaml
+    path: ./providers/rule-provider_AppleMail.yaml
+    interval: 86400
+  GameDownloadCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml
+    path: ./providers/rule-provider_GameDownloadCN.yaml
+    interval: 86400
+  GameDownload:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownload/GameDownload.yaml
+    path: ./providers/rule-provider_GameDownload.yaml
+    interval: 86400
+  GamesDownload:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/GamesDownload.yaml
+    path: ./providers/rule-provider_GamesDownload.yaml
+    interval: 86400
+  Classic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Classic/Classic.yaml
+    path: ./providers/rule-provider_Classic.yaml
+    interval: 86400
+  Nvidia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nvidia/Nvidia.yaml
+    path: ./providers/rule-provider_Nvidia.yaml
+    interval: 86400
+  Game:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
+    path: ./providers/rule-provider_Game.yaml
+    interval: 86400
+  GameRule:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/GameRule.yaml
+    path: ./providers/rule-provider_GameRule.yaml
+    interval: 86400
+  chat:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/chat.yaml
+    path: ./providers/rule-provider_chat.yaml
+    interval: 86400
+  KoreaMedia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/KoreaMedia.yaml
+    path: ./providers/rule-provider_KoreaMedia.yaml
+    interval: 86400
+  AmazonPrimeVideo:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonPrimeVideo/AmazonPrimeVideo.yaml
+    path: ./providers/rule-provider_AmazonPrimeVideo.yaml
+    interval: 86400
+  ViuTV:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ViuTV/ViuTV.yaml
+    path: ./providers/rule-provider_ViuTV.yaml
+    interval: 86400
+  KKTV:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/KKTV/KKTV.yaml
+    path: ./providers/rule-provider_KKTV.yaml
+    interval: 86400
+  LineTV:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/LineTV/LineTV.yaml
+    path: ./providers/rule-provider_LineTV.yaml
+    interval: 86400
+  friDay:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/friDay/friDay.yaml
+    path: ./providers/rule-provider_friDay.yaml
+    interval: 86400
+  Bahamut:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+    path: ./providers/rule-provider_Bahamut.yaml
+    interval: 86400
+  HamiVideo:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HamiVideo/HamiVideo.yaml
+    path: ./providers/rule-provider_HamiVideo.yaml
+    interval: 86400
+  Japan_Media:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/Japan_Media.yaml
+    path: ./providers/rule-provider_Japan_Media.yaml
+    interval: 86400
+  YouTube:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    path: ./providers/rule-provider_YouTube.yaml
+    interval: 86400
+  TIDAL:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TIDAL/TIDAL.yaml
+    path: ./providers/rule-provider_TIDAL.yaml
+    interval: 86400
+  Disney:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
+    path: ./providers/rule-provider_Disney.yaml
+    interval: 86400
+  myTVSUPER:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/myTVSUPER/myTVSUPER.yaml
+    path: ./providers/rule-provider_myTVSUPER.yaml
+    interval: 86400
+  PCCW:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PCCW/PCCW.yaml
+    path: ./providers/rule-provider_PCCW.yaml
+    interval: 86400
+  HBOHK:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml
+    path: ./providers/rule-provider_HBOHK.yaml
+    interval: 86400
+  HBOAsia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml
+    path: ./providers/rule-provider_HBOAsia.yaml
+    interval: 86400
+  Espn:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Espn/Espn.yaml
+    path: ./providers/rule-provider_Espn.yaml
+    interval: 86400
+  Fox:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Fox/Fox.yaml
+    path: ./providers/rule-provider_Fox.yaml
+    interval: 86400
+  ParamountPlus:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ParamountPlus/ParamountPlus.yaml
+    path: ./providers/rule-provider_ParamountPlus.yaml
+    interval: 86400
+  Peacock:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Peacock/Peacock.yaml
+    path: ./providers/rule-provider_Peacock.yaml
+    interval: 86400
+  DiscoveryPlus:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DiscoveryPlus/DiscoveryPlus.yaml
+    path: ./providers/rule-provider_DiscoveryPlus.yaml
+    interval: 86400
+  HBO:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
+    path: ./providers/rule-provider_HBO.yaml
+    interval: 86400
+  MAX:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/MAX.yaml
+    path: ./providers/rule-provider_MAX.yaml
+    interval: 86400
+  HuluUSA:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml
+    path: ./providers/rule-provider_HuluUSA.yaml
+    interval: 86400
+  emby:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/emby.yaml
+    path: ./providers/rule-provider_emby.yaml
+    interval: 86400
+  DAZN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DAZN/DAZN.yaml
+    path: ./providers/rule-provider_DAZN.yaml
+    interval: 86400
+  BiliBiliIntl:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBiliIntl/BiliBiliIntl.yaml
+    path: ./providers/rule-provider_BiliBiliIntl.yaml
+    interval: 86400
+  BiliBili:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+    path: ./providers/rule-provider_BiliBili.yaml
+    interval: 86400
+  iQIYI:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iQIYI/iQIYI.yaml
+    path: ./providers/rule-provider_iQIYI.yaml
+    interval: 86400
+  Spotify:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
+    path: ./providers/rule-provider_Spotify.yaml
+    interval: 86400
+  Qobuz:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/Qobuz.yaml
+    path: ./providers/rule-provider_Qobuz.yaml
+    interval: 86400
+  AppleMusic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMusic/AppleMusic.yaml
+    path: ./providers/rule-provider_AppleMusic.yaml
+    interval: 86400
+  AMusic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/AMusic.yaml
+    path: ./providers/rule-provider_AMusic.yaml
+    interval: 86400
+  AppleTV:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleTV/AppleTV.yaml
+    path: ./providers/rule-provider_AppleTV.yaml
+    interval: 86400
+  itunes:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/itunes.yaml
+    path: ./providers/rule-provider_itunes.yaml
+    interval: 86400
+  iTunes:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/iTunes.yaml
+    path: ./providers/rule-provider_iTunes.yaml
+    interval: 86400
+  TikTok:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml
+    path: ./providers/rule-provider_TikTok.yaml
+    interval: 86400
+  Netflix:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml
+    path: ./providers/rule-provider_Netflix.yaml
+    interval: 86400
+  iCloud:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloud/iCloud.yaml
+    path: ./providers/rule-provider_iCloud.yaml
+    interval: 86400
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+    path: ./providers/rule-provider_Microsoft.yaml
+    interval: 86400
+  apple:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geosite/classical/apple.yaml
+    path: ./providers/rule-provider_apple.yaml
+    interval: 86400
+  Apple:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml
+    path: ./providers/rule-provider_Apple.yaml
+    interval: 86400
+  GlobalMedia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+    path: ./providers/rule-provider_GlobalMedia.yaml
+    interval: 86400
+  Google:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
+    path: ./providers/rule-provider_Google.yaml
+    interval: 86400
+  yahoo:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/dongshull/ClashRule/main/yaml/yahoo.yaml
+    path: ./providers/rule-provider_yahoo.yaml
+    interval: 86400
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyGFWlist.yaml
+    path: ./providers/rule-provider_ProxyGFWlist.yaml
+    interval: 86400
+  ChinaMedia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+    path: ./providers/rule-provider_ChinaMedia.yaml
+    interval: 86400
+  Lan:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
+    path: ./providers/rule-provider_Lan.yaml
+    interval: 86400
+  Download:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Download.yaml
+    path: ./providers/rule-provider_Download.yaml
+    interval: 86400
