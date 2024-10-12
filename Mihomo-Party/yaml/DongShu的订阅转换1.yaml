@@ -1,190 +1,147 @@
 proxy-groups:                   # 代理组配置，定义代理选择和使用方式
   - name: 香港节点            # 代理组的名称，表示这是一个香港节点组
+    icon: https://flagcdn.com/h120/hk.png   # 代理组的ICON图标，表示这是一个香港节点组
     type: url-test              # 组的类型为"URL测试"，会自动选择最快的代理节点
     tolerance: 100              # 容忍的延迟值，单位为毫秒，延迟超过该值会被视为不理想
     interval: 1800              # 测试间隔，单位为秒，1800秒即30分钟
-    lazy: false                 # 是否懒加载，false表示每次都立即测试节点
-    use:
-      - 赔钱                    # 使用的代理提供者，引用之前定义的“电影院”代理组
-      - 电影院
-      - 魔戒                
+    lazy: false                 # 是否懒加载，false表示每次都立即测试节点                
     filter: "(Hong.*?Kong|\bHKT\b|\bHKBN\b|\bHGC\b|\bWTT\b|\bCMI\b|[^-]港|香港|HK|Hong Kong|🇭🇰)"                     # 使用正则表达式筛选代理名称中包含与香港相关的关键词的节点
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/hong-kong.gif
+    
 
   - name: 台湾节点
+    icon: https://flagcdn.com/h120/tw.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(Taiwan|新北|彰化|\bCHT\b|台湾|台灣|[^-]台|\bHINET\b|TW|🇹🇼)"
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/taiwan.gif
+    
       
   - name: 新加坡节点
+    icon: https://flagcdn.com/h120/sg.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(Singapore|新加坡|狮城|SG|🇸🇬)"
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/singapore.gif
+    
         
   - name: 日本节点
+    icon: https://flagcdn.com/h120/jp.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(JP|Japan|Tokyo|Osaka|Saitama|日本|东京|櫻花雲|東京|大阪|埼玉|🇯🇵)"
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/japan.gif
+    
+    
   - name: 韩国节点
+    icon: https://flagcdn.com/h120/kr.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(Korea|首尔|韩|韓|韩国|KR|🇰🇷)"
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/south-korea.gif
+    
 
   - name: 印度节点
+    icon: https://flagcdn.com/h120/in.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(IN|India|IND|印度|孟买|加尔各答|贾坎德|泰米尔纳德|🇮🇳)"
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/india.gif
+    
 
   - name: 美国节点
+    icon: https://flagcdn.com/h120/us.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(America|United.*?States|美国|美國|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|United States|🇺🇸)"
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-states.gif
+    
 
   - name: 英国节点
+    icon: https://flagcdn.com/h120/gb.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(GB|GBR|UK|England|United.*?Kingdom|London|英国|[^-]英|伦敦|🇬🇧)" 
     exclude-filter: "(Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置)"
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-kingdom.gif
+    
 
   - name: 法国节点
+    icon: https://flagcdn.com/h120/fr.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(FR|FRA|France|Paris|法国|巴黎|🇫🇷)"  
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/france.gif
+    
 
   - name: 德国节点
+    icon: https://flagcdn.com/h120/de.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(DE|Germany|DEU|法兰克福|德(國|国|意志)|中德|京德|🇩🇪)"  
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/germany.gif
+    
 
   - name: 巴西节点
+    icon: https://flagcdn.com/h120/br.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(BR|BRA|Brazil|Paulo|巴西|圣保罗|🇧🇷)"  
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/brazil.gif
+    
 
   - name: 澳大利亚节点
+    icon: https://flagcdn.com/h120/au.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(AU|AUS|Australia|Sydney|澳大利亚|澳洲|悉尼|🇦🇺)"  
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/australia.gif
+    
 
   - name: 荷兰节点
+    icon: https://flagcdn.com/h120/bq.png
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(NLD|Netherlands|荷兰|阿姆斯特丹|尼德兰|🇳🇱)"  
-    icon: https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/netherlands.gif
+    
 
   - name: 迪拜节点
+    icon:
     type: url-test
     tolerance: 100
     interval: 1800
-    lazy: false
-    use:
-      - 赔钱
-      - 电影院
-      - 魔戒
+    lazy: false    
     filter: "(AE|UAE|United Arab Emirates|Dubai|阿联酋|迪拜|阿拉伯联合酋长国|🇦🇪)" 
-    icon: 
 
-  - name: 🎞️ V6代理
+
+  - name: V6代理
+    icon: https://laji.o--o.xyz/i/2024/10/12/074224.png
     type: url-test
     tolerance: 100
     interval: 1800
     lazy: false
-    use:
-      - 电影院
-      - 魔戒
-    filter: "(三夫|無間道|花樣年華|重慶森林|七月俏佳人|八月の狂詩曲)"  
+    filter: "(三夫|無間道|花樣年華|重慶森林|七月俏佳人|八月の狂詩曲)"
+      
 
   - name: 🎞️ 送中代理
     type: url-test
     tolerance: 100
     interval: 1800
     lazy: false
-    use:
-      - 赔钱
     filter: "(电信/联通|电信/移动/联通)"  
+    
 
   - name: 手动切换             # 代理组名称为“手动切换”，带有循环符号，用户可以手动选择代理
     icon: https://fastly.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
@@ -205,7 +162,8 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
       - 荷兰节点                # 荷兰代理节点组
       - 迪拜节点                # 迪拜代理节点组
 
-  - name: 🧬 国内DNS
+  - name: 国内DNS
+    icon: https://cdn.statically.io/img/laji.o--o.xyz/i/2024/10/12/084806.png
     type: select
     proxies:
       - DIRECT
@@ -225,7 +183,8 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
       - 荷兰节点
       - 迪拜节点
 
-  - name: 🧬 Cloudflare
+  - name: Cloudflare
+    icon: https://laji.o--o.xyz/i/2024/10/12/085010.ico
     type: select
     proxies:
       - 香港节点
@@ -244,7 +203,8 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
       - 荷兰节点
       - 迪拜节点
 
-  - name: 🧬 海外DNS
+  - name: 海外DNS
+    icon: https://laji.o--o.xyz/i/2024/10/12/085251.png
     type: select
     proxies:
       - 香港节点
@@ -263,7 +223,8 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
       - 荷兰节点
       - 迪拜节点
 
-  - name: 🎫 PT直连
+  - name: PT直连
+    icon: https://laji.o--o.xyz/i/2024/10/12/090015.jpg
     type: select
     proxies:
       - DIRECT
@@ -305,6 +266,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
       - 迪拜节点
 
   - name: Bing
+    icon: https://laji.o--o.xyz/i/2024/10/12/090340.png
     type: select
     proxies:
       - 手动切换
@@ -1332,16 +1294,16 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
       - 荷兰节点
       - 迪拜节点
 rules:                          # 规则定义，用于指定不同域名或服务走不同的代理节点
-  - RULE-SET,ChinaDNS,🧬 国内DNS  # 使用规则集 ChinaDNS，处理外部DNS解析
-  - RULE-SET,ForeignDNS,🧬 海外DNS  # 使用规则集 ForeignDNS，处理外部DNS解析
-  - RULE-SET,PT-DIRECT,🎫 PT直连    # 使用规则集 PT-DIRECT，直连私有跟踪器（PT）流量
-  - RULE-SET,CloudflareDomain,🧬 Cloudflare  # 使用规则集 CloudflareDomain，处理Cloudflare相关域名
+  - RULE-SET,ChinaDNS,国内DNS  # 使用规则集 ChinaDNS，处理外部DNS解析
+  - RULE-SET,ForeignDNS,海外DNS  # 使用规则集 ForeignDNS，处理外部DNS解析
+  - RULE-SET,PT-DIRECT,PT直连    # 使用规则集 PT-DIRECT，直连私有跟踪器（PT）流量
+  - RULE-SET,CloudflareDomain,Cloudflare  # 使用规则集 CloudflareDomain，处理Cloudflare相关域名
   - DOMAIN-SUFFIX,torrentleech.org,香港节点  # 特定域名后缀走香港节点代理
   - DOMAIN-SUFFIX,metacubex.one,香港节点    # metacubex.one 走香港节点代理
   - DOMAIN-SUFFIX,v2rayssr.com,香港节点    # v2rayssr.com 走香港节点代理
   - DOMAIN-SUFFIX,gitbook.io,香港节点     # gitbook.io 走香港节点代理
   - DOMAIN-SUFFIX,monikadesign.uk,香港节点 # monikadesign.uk 走香港节点代理
-  - DOMAIN-SUFFIX,byr.pt,🎞️ V6代理           # byr.pt 走IPv6代理
+  - DOMAIN-SUFFIX,byr.pt,V6代理           # byr.pt 走IPv6代理
   - DOMAIN-SUFFIX,themoviedb.org,香港节点  # themoviedb.org 走香港节点代理
   - DOMAIN-SUFFIX,tmdb.org,香港节点       # tmdb.org 走香港节点代理
   - DOMAIN-SUFFIX,recmata.net,香港节点    # recmata.net 走香港节点代理
