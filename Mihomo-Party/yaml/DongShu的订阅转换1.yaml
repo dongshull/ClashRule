@@ -156,6 +156,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: V6代理
     icon: https://laji.o--o.xyz/i/2024/10/12/074224.png
+    include-all: true
     type: url-test
     url: https://1.1.1.1/generate_204
     tolerance: 100
@@ -166,6 +167,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 🎞️ 送中代理
     icon: https://laji.o--o.xyz/i/2024/10/12/074224.png
+    include-all: true
     type: url-test
     url: https://1.1.1.1/generate_204
     tolerance: 100
