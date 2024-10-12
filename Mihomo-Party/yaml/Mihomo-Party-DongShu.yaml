@@ -1,14 +1,14 @@
 proxy-groups:                   # 代理组配置，定义代理选择和使用方式
-  - name: 香港节点            # 代理组的名称，表示这是一个香港节点组
-    icon: https://flagcdn.com/h120/hk.png   # 代理组的ICON图标，表示这是一个香港节点组
-    include-all: true
-    type: url-test
-    url: https://1.1.1.1/generate_204              # 组的类型为"URL测试"，会自动选择最快的代理节点    
-    tolerance: 100              # 容忍的延迟值，单位为毫秒，延迟超过该值会被视为不理想
-    interval: 1800              # 测试间隔，单位为秒，1800秒即30分钟
-    lazy: false                 # 是否懒加载，false表示每次都立即测试节点                
-    filter: "(Hong.*?Kong|\bHKT\b|\bHKBN\b|\bHGC\b|\bWTT\b|\bCMI\b|[^-]港|香港|HK|Hong Kong|🇭🇰)"                     # 使用正则表达式筛选代理名称中包含与香港相关的关键词的节点
-    
+  - name: 香港节点  # 代理组的名称，表示这是一个香港节点组
+    icon: https://flagcdn.com/h120/hk.png  # 代理组的ICON图标，显示香港节点
+    include-all: true  # 包含所有符合过滤规则的代理
+    type: url-test  # 节点组类型为 URL 测试，根据延迟选择最快的节点
+    url: https://1.1.1.1/generate_204  # 用于测试节点响应的 URL
+    tolerance: 100  # 延迟容忍值，超过 100ms 的节点会被视为不理想
+    interval: 1800  # 测试节点的时间间隔，单位为秒，每 1800 秒（30分钟）测试一次
+    lazy: false  # 懒加载设置，false 表示每次都立即测试所有节点
+    filter: "(Hong.*?Kong|\bHKT\b|\bHKBN\b|\bHGC\b|\bWTT\b|\bCMI\b|[^-]港|香港|HK|Hong Kong|🇭🇰)"  # 正则表达式，用于筛选香港相关的节点
+
   - name: 台湾节点
     icon: https://flagcdn.com/h120/tw.png
     include-all: true
