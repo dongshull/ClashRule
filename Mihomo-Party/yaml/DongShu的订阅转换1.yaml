@@ -2,7 +2,8 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
   - name: 香港节点            # 代理组的名称，表示这是一个香港节点组
     icon: https://flagcdn.com/h120/hk.png   # 代理组的ICON图标，表示这是一个香港节点组
     include-all: true
-    type: url-test              # 组的类型为"URL测试"，会自动选择最快的代理节点
+    type: url-test
+    url: https://1.1.1.1/generate_204              # 组的类型为"URL测试"，会自动选择最快的代理节点    
     tolerance: 100              # 容忍的延迟值，单位为毫秒，延迟超过该值会被视为不理想
     interval: 1800              # 测试间隔，单位为秒，1800秒即30分钟
     lazy: false                 # 是否懒加载，false表示每次都立即测试节点                
@@ -13,6 +14,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/tw.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -23,6 +25,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/sg.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -33,6 +36,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/jp.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -43,6 +47,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/kr.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -53,6 +58,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/in.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -63,6 +69,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/us.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -73,6 +80,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/gb.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -84,6 +92,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/fr.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -94,6 +103,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/de.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -104,6 +114,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/br.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -114,6 +125,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/au.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -124,6 +136,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/bq.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -134,6 +147,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://flagcdn.com/h120/bq.png
     include-all: true
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false    
@@ -143,6 +157,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
   - name: V6代理
     icon: https://laji.o--o.xyz/i/2024/10/12/074224.png
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false
@@ -151,6 +166,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 🎞️ 送中代理
     type: url-test
+    url: https://1.1.1.1/generate_204
     tolerance: 100
     interval: 1800
     lazy: false
