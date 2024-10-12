@@ -9,7 +9,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false                 # 是否懒加载，false表示每次都立即测试节点                
     filter: "(Hong.*?Kong|\bHKT\b|\bHKBN\b|\bHGC\b|\bWTT\b|\bCMI\b|[^-]港|香港|HK|Hong Kong|🇭🇰)"                     # 使用正则表达式筛选代理名称中包含与香港相关的关键词的节点
     
-
   - name: 台湾节点
     icon: https://flagcdn.com/h120/tw.png
     include-all: true
@@ -19,8 +18,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     interval: 1800
     lazy: false    
     filter: "(Taiwan|新北|彰化|\bCHT\b|台湾|台灣|[^-]台|\bHINET\b|TW|🇹🇼)"
-    
-      
+          
   - name: 新加坡节点
     icon: https://flagcdn.com/h120/sg.png
     include-all: true
@@ -30,8 +28,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     interval: 1800
     lazy: false    
     filter: "(Singapore|新加坡|狮城|SG|🇸🇬)"
-    
-        
+            
   - name: 日本节点
     icon: https://flagcdn.com/h120/jp.png
     include-all: true
@@ -41,8 +38,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     interval: 1800
     lazy: false    
     filter: "(JP|Japan|Tokyo|Osaka|Saitama|日本|东京|櫻花雲|東京|大阪|埼玉|🇯🇵)"
-    
-    
+        
   - name: 韩国节点
     icon: https://flagcdn.com/h120/kr.png
     include-all: true
@@ -53,7 +49,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(Korea|首尔|韩|韓|韩国|KR|🇰🇷)"
     
-
   - name: 印度节点
     icon: https://flagcdn.com/h120/in.png
     include-all: true
@@ -64,7 +59,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(IN|India|IND|印度|孟买|加尔各答|贾坎德|泰米尔纳德|🇮🇳)"
     
-
   - name: 美国节点
     icon: https://flagcdn.com/h120/us.png
     include-all: true
@@ -75,7 +69,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(America|United.*?States|美国|美國|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|United States|🇺🇸)"
     
-
   - name: 英国节点
     icon: https://flagcdn.com/h120/gb.png
     include-all: true
@@ -87,7 +80,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     filter: "(GB|GBR|UK|England|United.*?Kingdom|London|英国|[^-]英|伦敦|🇬🇧)" 
     exclude-filter: "(Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置)"
     
-
   - name: 法国节点
     icon: https://flagcdn.com/h120/fr.png
     include-all: true
@@ -98,7 +90,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(FR|FRA|France|Paris|法国|巴黎|🇫🇷)"  
     
-
   - name: 德国节点
     icon: https://flagcdn.com/h120/de.png
     include-all: true
@@ -109,7 +100,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(DE|Germany|DEU|法兰克福|德(國|国|意志)|中德|京德|🇩🇪)"  
     
-
   - name: 巴西节点
     icon: https://flagcdn.com/h120/br.png
     include-all: true
@@ -120,7 +110,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(BR|BRA|Brazil|Paulo|巴西|圣保罗|🇧🇷)"  
     
-
   - name: 澳大利亚节点
     icon: https://flagcdn.com/h120/au.png
     include-all: true
@@ -131,7 +120,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(AU|AUS|Australia|Sydney|澳大利亚|澳洲|悉尼|🇦🇺)"  
     
-
   - name: 荷兰节点
     icon: https://flagcdn.com/h120/bq.png
     include-all: true
@@ -142,7 +130,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false    
     filter: "(NLD|Netherlands|荷兰|阿姆斯特丹|尼德兰|🇳🇱)"  
     
-
   - name: 迪拜节点
     icon: https://flagcdn.com/h120/bq.png
     include-all: true
@@ -152,7 +139,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     interval: 1800
     lazy: false    
     filter: "(AE|UAE|United Arab Emirates|Dubai|阿联酋|迪拜|阿拉伯联合酋长国|🇦🇪)" 
-
 
   - name: V6代理
     icon: https://laji.o--o.xyz/i/2024/10/12/074224.png
@@ -164,8 +150,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false
     filter: "(三夫|無間道|花樣年華|重慶森林|七月俏佳人|八月の狂詩曲)"
       
-
-  - name: 🎞️ 送中代理
+  - name: 送中代理
     icon: https://laji.o--o.xyz/i/2024/10/12/074224.png
     include-all: true
     type: url-test
@@ -175,7 +160,6 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     lazy: false
     filter: "(电信/联通|电信/移动/联通)"  
     
-
   - name: 手动切换             # 代理组名称为“手动切换”，带有循环符号，用户可以手动选择代理
     icon: https://fastly.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     type: select                 # 组的类型为“select”，表示手动选择代理
@@ -465,7 +449,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
     proxies:
-      - 🎞️ 送中代理
+      - 送中代理
       - 手动切换
       - DIRECT      
       - 香港节点
