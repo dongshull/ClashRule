@@ -118,7 +118,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     
 
   - name: 迪拜节点
-    icon:
+    icon: https://flagcdn.com/h120/bq.png
     type: url-test
     tolerance: 100
     interval: 1800
