@@ -1,6 +1,7 @@
 proxy-groups:                   # 代理组配置，定义代理选择和使用方式
   - name: 香港节点            # 代理组的名称，表示这是一个香港节点组
     icon: https://flagcdn.com/h120/hk.png   # 代理组的ICON图标，表示这是一个香港节点组
+    include-all: true
     type: url-test              # 组的类型为"URL测试"，会自动选择最快的代理节点
     tolerance: 100              # 容忍的延迟值，单位为毫秒，延迟超过该值会被视为不理想
     interval: 1800              # 测试间隔，单位为秒，1800秒即30分钟
@@ -10,6 +11,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 台湾节点
     icon: https://flagcdn.com/h120/tw.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -19,6 +21,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
       
   - name: 新加坡节点
     icon: https://flagcdn.com/h120/sg.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -28,6 +31,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
         
   - name: 日本节点
     icon: https://flagcdn.com/h120/jp.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -37,6 +41,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
     
   - name: 韩国节点
     icon: https://flagcdn.com/h120/kr.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -46,6 +51,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 印度节点
     icon: https://flagcdn.com/h120/in.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -55,6 +61,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 美国节点
     icon: https://flagcdn.com/h120/us.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -64,6 +71,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 英国节点
     icon: https://flagcdn.com/h120/gb.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -74,6 +82,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 法国节点
     icon: https://flagcdn.com/h120/fr.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -83,6 +92,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 德国节点
     icon: https://flagcdn.com/h120/de.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -92,6 +102,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 巴西节点
     icon: https://flagcdn.com/h120/br.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -101,6 +112,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 澳大利亚节点
     icon: https://flagcdn.com/h120/au.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -110,6 +122,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 荷兰节点
     icon: https://flagcdn.com/h120/bq.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
@@ -119,6 +132,7 @@ proxy-groups:                   # 代理组配置，定义代理选择和使用�
 
   - name: 迪拜节点
     icon: https://flagcdn.com/h120/bq.png
+    include-all: true
     type: url-test
     tolerance: 100
     interval: 1800
