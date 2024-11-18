@@ -3,7 +3,8 @@
 # UPDATED: 2024-11-18 16:14:51
 # DOMAIN-KEYWORD: 1
 # TOTAL: 190
-
+# > CloudFlare
+DOMAIN-KEYWORD,challenges.cloudflare.com
 # > PT-站点
 DOMAIN-KEYWORD,tracker
 DOMAIN-KEYWORD,m-team.cc
