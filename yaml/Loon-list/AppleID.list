@@ -1,9 +1,0 @@
-# NAME: AppleID
-# AUTHOR: DongShu
-# UPDATED: 2024-11-18 16:14:51
-# DOMAIN: 1
-# TOTAL: 4
-DOMAIN,appleid.apple.com
-DOMAIN,appleid.cdn-apple.com
-DOMAIN,gsa.apple.com
-DOMAIN,idmsa.apple.com
